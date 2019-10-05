@@ -1,0 +1,9 @@
+version: '3.2'
+services:
+  web:
+    build: .
+    volumes:
+      - '.:/usr/src/app'
+    env_file:
+      - .env
+
