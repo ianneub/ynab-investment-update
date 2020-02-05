@@ -12,4 +12,5 @@ gem 'nokogiri', '~> 1.10'
 
 group :development do
 	gem 'pry'
+	gem 'byebug'
 end

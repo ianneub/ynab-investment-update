@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'bigdecimal'
+require 'byebug'
 
 module Stock
 	class Client
@@ -7,20 +8,14 @@ module Stock
 
 		def fund(symbol)
 			puts "Looking for symbol #{symbol} ..."
-			doc = Nokogiri::HTML(self.class.get("https://www.marketwatch.com/investing/fund/#{symbol.downcase}").body)
+			data = self.class.get("https://query1.finance.yahoo.com/v8/finance/chart/#{symbol.upcase}?region=US&lang=en-US&includePrePost=false&interval=1d&range=1mo&corsDomain=finance.yahoo.com&.tsrc=finance").parsed_response
 			
-			# check for afterhours number
-			after_hours = doc.css('.status--after')
-			price = if after_hours.length > 0
-				doc.css('.intraday__close td')[0].text.gsub('$','')
-			else
-				doc.css('.intraday__price > .value').text
-			end
+			price = data['chart']['result'].first['meta']['regularMarketPrice']
 
-			date = Date.parse(doc.css('.timestamp__time > bg-quote').text)
+			date = Time.at(data['chart']['result'].first['meta']['regularMarketTime'])
 			
 			puts "Found price for #{symbol}: #{price}"
-			{price: BigDecimal(price), date: date}
+			{price: BigDecimal(price.to_s), date: date}
 		end
 	end
 end

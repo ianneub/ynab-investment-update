@@ -6,4 +6,5 @@ services:
       - '.:/usr/src/app'
     env_file:
       - .env
-
+    stdin_open: true
+    tty: true
