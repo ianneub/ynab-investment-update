@@ -1,13 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    byebug (11.1.1)
     coderay (1.1.2)
     httparty (0.16.2)
       multi_xml (>= 0.5.2)
     method_source (0.9.0)
     mini_portile2 (2.4.0)
     multi_xml (0.6.0)
-    nokogiri (1.10.1)
+    nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -17,6 +18,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   httparty (~> 0.16)
   nokogiri (~> 1.10)
   pry
