@@ -1,6 +1,5 @@
 require 'nokogiri'
 require 'bigdecimal'
-require 'byebug'
 
 module Stock
 	class Client
