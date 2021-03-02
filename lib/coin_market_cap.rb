@@ -9,7 +9,7 @@ module CoinMarketCap
 		headers 'Content-Type' => 'application/json'
 		headers 'X-CMC_PRO_API_KEY' => ENV['COINMARKETCAP_KEY']
 
-		def quotes(symbols:'BTC,XRP,ETH,BCH,MIOTA,LTC,GLM,DGB,DOGE')
+		def quotes(symbols:'BTC,XRP,ETH,BCH,MIOTA,LTC,GLM,DGB,DOGE,ADA')
 			self.class.get('/cryptocurrency/quotes/latest', query: { symbol: symbols }).parsed_response
 		end
 	end
