@@ -13,8 +13,6 @@ module Stock
       puts "Looking for symbol #{symbol} ..."
       data = self.class.get("https://query1.finance.yahoo.com/v8/finance/chart/#{symbol.upcase}?region=US&lang=en-US&includePrePost=false&interval=1d&range=1mo&corsDomain=finance.yahoo.com&.tsrc=finance").parsed_response
 
-      p "here!! #{__FILE__}:#{__LINE__}"
-      p data
       price = data['chart']['result'].first['meta']['regularMarketPrice']
 
       date = Time.at(data['chart']['result'].first['meta']['regularMarketTime'])
