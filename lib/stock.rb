@@ -5,9 +5,7 @@ module Stock
   class Client
     include HTTParty
 
-    headers({
-      'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Safari/537.36'
-    })
+    headers({ 'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Safari/537.36' })
 
     def fund(symbol)
       puts "Looking for symbol #{symbol} ..."
@@ -18,7 +16,7 @@ module Stock
       date = Time.at(data['chart']['result'].first['meta']['regularMarketTime'])
 
       puts "Found price for #{symbol}: #{price}"
-      {price: BigDecimal(price.to_s), date: date}
+      { price: BigDecimal(price.to_s), date: date }
     end
   end
 end
